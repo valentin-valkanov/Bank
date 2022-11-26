@@ -4,7 +4,7 @@ namespace ValentinValkanov\Bank;
 
 interface TransactionInterface
 {
-    public function getId();
+    public function amount(): int;
 
-    public function amount():float;
+    public function created(): \DateTimeImmutable;
 }

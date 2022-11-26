@@ -9,15 +9,30 @@ namespace ValentinValkanov\Bank;
  * @copyright
  * @version
  */
-abstract class Transaction implements TransactionInterface
+abstract class Transaction implements TransactionInterface, EntityInterface
 {
     protected int $id;
 
-    protected float $amount;
+    protected int $amount;
+
+    protected \DateTimeImmutable $created;
 
     public function __construct($id, $amount)
     {
         $this->id = $id;
-        $this->amount = $amount;
+        $this->setAmount($amount);
+        $this->created = new \DateTimeImmutable();
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function created(): \DateTimeImmutable
+    {
+        return $this->created;
+    }
+
+    abstract protected function setAmount(int $amount): self;
 }

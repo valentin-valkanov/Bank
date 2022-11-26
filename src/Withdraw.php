@@ -12,12 +12,16 @@ namespace ValentinValkanov\Bank;
 class Withdraw extends Transaction
 {
 
-    public function getId()
+    protected function setAmount(int $amount): Transaction
     {
-        // TODO: Implement getId() method.
+        if ($amount < 0) {
+            $this->amount = $amount;
+            return $this;
+        }
+        throw new \InvalidArgumentException('Invalid amount');
     }
 
-    public function amount(): float
+    public function amount(): int
     {
         // TODO: Implement amount() method.
     }

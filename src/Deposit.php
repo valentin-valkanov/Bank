@@ -11,14 +11,17 @@ namespace ValentinValkanov\Bank;
  */
 class Deposit extends Transaction
 {
-
-    public function getId()
+    public function amount(): int
     {
-        // TODO: Implement getId() method.
+        return $this->amount;
     }
 
-    public function amount(): float
+    protected function setAmount(int $amount): self
     {
-        // TODO: Implement amount() method.
+        if ($amount > 0) {
+            $this->amount = $amount;
+            return $this;
+        }
+        throw new \InvalidArgumentException("Invalid amount");
     }
 }
