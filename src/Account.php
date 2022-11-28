@@ -15,6 +15,10 @@ class Account implements AccountInterface, EntityInterface
 
     private array $transactions = [];
 
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
 
     public function customer(): CustomerInterface
     {
@@ -53,6 +57,6 @@ class Account implements AccountInterface, EntityInterface
 
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 }
