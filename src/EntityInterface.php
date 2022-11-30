@@ -4,5 +4,5 @@ namespace ValentinValkanov\Bank;
 
 interface EntityInterface
 {
-    public function getId(): int;
+    public function getId(): string;
 }

@@ -19,9 +19,4 @@ class Withdraw extends Transaction
         }
         throw new \InvalidArgumentException('Invalid amount');
     }
-
-    public function amount(): int
-    {
-        // TODO: Implement amount() method.
-    }
 }

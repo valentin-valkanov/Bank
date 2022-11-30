@@ -10,7 +10,7 @@ interface AccountInterface
 
     public function withdraw(int $amount);
 
-    public function isCredit():bool;
+    public function isCredit(): bool;
 
-    public function balance():float;
+    public function balance(): int;
 }

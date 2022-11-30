@@ -12,9 +12,9 @@ namespace ValentinValkanov\Bank;
 class Customer implements EntityInterface, CustomerInterface
 {
     /**
-     * @var int
+     * @var string
      */
-    private int $id;
+    private string $id;
 
     /**
      * @var string
@@ -37,12 +37,12 @@ class Customer implements EntityInterface, CustomerInterface
     private array $accounts;
 
     /**
-     * @param int $id
+     * @param string $id
      * @param string $name
      * @param string $email
      * @param string $phone
      */
-    public function __construct(int $id, string $name, string $email, string $phone)
+    public function __construct(string $id, string $name, string $email, string $phone)
     {
         $this->id = $id;
         $this->name = $name;
@@ -82,7 +82,7 @@ class Customer implements EntityInterface, CustomerInterface
         return $this->accounts;
     }
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

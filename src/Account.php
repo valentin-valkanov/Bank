@@ -2,6 +2,8 @@
 
 namespace ValentinValkanov\Bank;
 
+use function PHPUnit\Framework\isEmpty;
+
 /**
  * Class Account
  *
@@ -11,11 +13,13 @@ namespace ValentinValkanov\Bank;
  */
 class Account implements AccountInterface, EntityInterface
 {
+    private string $id;
+
     private int $overdraft = 0;
 
     private array $transactions = [];
 
-    public function __construct(int $id)
+    public function __construct($id)
     {
         $this->id = $id;
     }
@@ -25,19 +29,32 @@ class Account implements AccountInterface, EntityInterface
         // TODO: Implement customer() method.
     }
 
+    // this is a getter without get keyword
     public function transactions(): array
     {
         return $this->transactions;
     }
 
+
+    public function hasTransactions(): bool
+    {
+        return !(count($this->transactions()) === 0);
+    }
+
     public function deposit(int $amount): void
     {
-        $this->addTransaction(new Deposit(1, $amount));
+        $this->addTransaction(new Deposit($this, $amount));
     }
 
     public function withdraw(int $amount): void
     {
-       $this->addTransaction(new Withdraw(2, $amount));
+        $balance = $this->balance();
+
+        if (abs($amount) > $balance) {
+            throw new \RuntimeException('Insufficient funds!');
+        }
+
+        $this->addTransaction(new Withdraw($this, $amount));
     }
 
     private function addTransaction(TransactionInterface $transaction): void
@@ -50,12 +67,18 @@ class Account implements AccountInterface, EntityInterface
         return $this->overdraft > 0;
     }
 
-    public function balance(): float
+    public function balance(): int
     {
-        // TODO: Implement balance() method.
+        $balance = (true === $this->isCredit()) ? $this->overdraft : 0;
+
+        foreach ($this->transactions() as $transaction) {
+            $balance += $transaction->amount();
+        }
+
+        return $balance;
     }
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
