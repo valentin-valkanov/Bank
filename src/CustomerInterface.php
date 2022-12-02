@@ -4,11 +4,11 @@ namespace ValentinValkanov\Bank;
 
 interface CustomerInterface
 {
-    public function getName(): string;
+    public function name(): string;
 
-    public function getEmail(): string;
+    public function email(): string;
 
-    public function getPhone(): string;
+    public function phone(): string;
 
     public function getAccount($id): AccountInterface;
 

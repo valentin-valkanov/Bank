@@ -15,11 +15,11 @@ abstract class Transaction implements TransactionInterface, EntityInterface
 
     protected int $amount;
 
-    protected Account $account;
+    protected AccountInterface $account;
 
     protected \DateTimeImmutable $created;
 
-    public function __construct($account, $amount)
+    public function __construct(AccountInterface $account, $amount)
     {
         $this->id = Uuid::v4();
         $this->setAccount($account);

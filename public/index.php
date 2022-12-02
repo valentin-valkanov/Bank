@@ -6,11 +6,21 @@ chdir(dirname(__DIR__));
 include __DIR__ . '/../vendor/autoload.php';
 
 /**
+ * router map (method, path, handler)
+ * POST /accounts => CreateAccountHandler
+ * POST /customer => CreateCustomerHandler
+ * (*) 404 PageNotFoundHandler
+ */
+
+
+
+/**
  * Motivation
  *
  * (1) OOP - Inheritance, Polymorphism, Encapsulation
  * (2) SOLID - SrP, OcP, LsP, IsP, DiP
  * (3) DRY, KISS
+ * (4) Design Patterns - Factory, Repository ...
  */
 
 

@@ -51,37 +51,59 @@ class Customer implements EntityInterface, CustomerInterface
         $this->accounts = [];
     }
 
-
-    public function getName(): string
+    /**
+     * @return string
+     */
+    public function name(): string
     {
         return $this->name;
     }
 
-    public function getEmail(): string
+    /**
+     * @return string
+     */
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getPhone(): string
+    /**
+     * @return string
+     */
+    public function phone(): string
     {
         return $this->phone;
     }
 
+    /**
+     * @param AccountInterface $account
+     * @return void
+     */
     public function addAccount(AccountInterface $account): void
     {
         $this->accounts[$account->getId()] = $account;
     }
 
+    /**
+     * @param $id
+     * @return AccountInterface
+     */
     public function getAccount($id): AccountInterface
     {
         return $this->accounts[$id];
     }
 
+    /**
+     * @return array
+     */
     public function getAccounts(): array
     {
         return $this->accounts;
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->id;
