@@ -3,8 +3,8 @@
 ## The Goal
 
 ### Workflow
-- composer: Using composer to initialize a new project
-- git: Using git to track the project
+- composer: Using composer to initialize a new project `composer init`
+- git: Using git to track the project `git init`
 
 ### PHP
 - Concrete Classes

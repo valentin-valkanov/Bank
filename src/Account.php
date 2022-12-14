@@ -21,7 +21,7 @@ class Account implements AccountInterface, EntityInterface
     /**
      * @var int
      */
-    private int $overdraft = 0;
+    private int $overdraft;
 
     /**
      * @var array
@@ -31,9 +31,10 @@ class Account implements AccountInterface, EntityInterface
     /**
      * @param $id
      */
-    public function __construct($id)
+    public function __construct($id, $overdraft = 0)
     {
         $this->id = $id;
+        $this->overdraft = $overdraft;
     }
 
     /**

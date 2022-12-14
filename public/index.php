@@ -5,13 +5,33 @@ use ValentinValkanov\Bank;
 chdir(dirname(__DIR__));
 include __DIR__ . '/../vendor/autoload.php';
 
+// this is constructed by default
+$atm = new Bank\Atm('1001', 0000);
+
+if( $_GET['amount']) {
+    $balance = $atm->withdraw(-abs($_GET['amount']));
+    var_dump($balance);
+    exit();
+} else {
+    exit('amount is not set');
+}
+
+//$pin = readline('Card pin: ');
+//$amount = readline('Enter the amount: ');
+
+
+
+
+// Browser -> HTTP Server (Apache, nginx) -> index.php/index.py/index.class
+// Cli     -> Cli Server ->
+
+
 /**
  * router map (method, path, handler)
  * POST /accounts => CreateAccountHandler
  * POST /customer => CreateCustomerHandler
  * (*) 404 PageNotFoundHandler
  */
-
 
 
 /**
@@ -47,6 +67,6 @@ $account  =  $customer->getAccount($uuid);
 $account->deposit(100);
 $account->withdraw(-20);
 $account->withdraw(-10);
-$account->withdraw(-100);
+$account->withdraw(-10);
 
 var_dump($account->balance());
