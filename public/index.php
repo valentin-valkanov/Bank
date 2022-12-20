@@ -6,19 +6,12 @@ chdir(dirname(__DIR__));
 include __DIR__ . '/../vendor/autoload.php';
 
 // this is constructed by default
-$atm = new Bank\Atm('1001', 0000);
+$atm = new Bank\Atm('1002', 1234);
 
-if( $_GET['amount']) {
-    $balance = $atm->withdraw(-abs($_GET['amount']));
-    var_dump($balance);
-    exit();
-} else {
-    exit('amount is not set');
-}
 
-//$pin = readline('Card pin: ');
-//$amount = readline('Enter the amount: ');
-
+$balance = $atm->withdraw(-10);
+var_dump($balance);
+exit();
 
 
 

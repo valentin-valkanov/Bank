@@ -32,19 +32,16 @@ class Atm
             'id'  => $this->cardId,
             'pin' => $this->pin
         ]);
+
         if(!$card instanceof Card) {
             exit('ATM: card problem!');
         }
 
         try {
-            $account = $card->account();
-
-            $account->withdraw($amount);
-            return $account->balance();
+            $card->account()->withdraw($amount);
+            return $card->account()->balance();
         } catch (\Exception $e) {
-            exit($e->getMessage());
+            return $e->getMessage();
         }
     }
-
-
 }
